@@ -5,7 +5,7 @@
     <div class="card mb-3 mt-5" style="max-width: 100%; border: none">
         <div class="row g-0">
             <div class="col-md-7">
-                <img src="{{ asset('images_upload/' . $product->image) }}" class="img-fluid" alt="@Model.TENSP">
+                <img src="{{ asset('images_upload/' . $product->image) }}" class="img-fluid" alt="">
             </div>
             <div class="col-md-5">
                 <div class="card-body">
@@ -27,7 +27,10 @@
                         <option value="Silver">Silver</option>
                         <option value="Purple">Purple</option>
                     </select>
-                    <form action="#" method="post">
+                    <form action="{{route('cart.add')}}" method="post">
+                        @csrf
+                        <input type="text" hidden name="product_id" value="{{$product->_id}}">
+                        <input type="number" name="quantity" value="1" min="1" hidden />
                         <button class="btn my-3 text-center" type="submit" style="border-radius: 3px; background-color:gray;   width: 200px; height: 40px; color: white;">Thêm vào giỏ hàng</button>
                         <button class="btn my-3 text-center" type="submit" style="border-radius: 3px; background-color: gray; width: 200px; height: 40px; color: white;">Mua ngay</button>
                     </form>
@@ -62,7 +65,7 @@
         <div class="col-12 my-3">
             <a href="/products/{{$item->_id}}" class="text-decoration-none text-black">
                 <div class="card" style="max-width: 18rem; min-width: 10rem; border-radius: 3px; box-shadow: 0 0 10px 5px rgb(221, 226, 230);">
-                    <img src="{{$item->image}}" class="card-img-top img-fluid" style="height: 200px; max-width: 100%; object-fit: cover;" alt="@item.TENSP">
+                    <img src="{{ asset('images_upload/' .$item->image)}}" class="card-img-top img-fluid" style="height: 200px; max-width: 100%; object-fit: cover;" alt="">
                     <div class="card-body">
                         <h5 class="card-title text-truncate" style="overflow: hidden; font-size: 100%;">{{$item->name}}</h5>
                         <p class="card-text text-danger">{{$item->price}}</p>

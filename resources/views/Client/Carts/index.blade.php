@@ -17,18 +17,23 @@
                     <tr>
                         {{-- {{$product = $products->find($item['product_id'])}} --}}
                         <td style="vertical-align: middle;">{{ $index + 1 }}</td>
-                        <td style="padding: 10px;"><img src ="{{ asset('images_upload/' . $products->find($item['product_id'])->image) }}"
+                        <td style="padding: 10px;"><img
+                                src ="{{ asset('images_upload/' . $products->find($item['product_id'])->image) }}"
                                 width="80px" /></td>
                         <td style="vertical-align: middle;">
-                            <form action="#" method="post">
-                                <input type="number" value="{{ $item['quantity'] }}" name="sl" min="1"
+                            <form action="{{route('cart.updateQuantity')}}" method="post">
+                                @csrf
+                                <input type="text" hidden name="product_id" value="{{$item['product_id']}}">
+                                <input type="number" value="{{ $item['quantity'] }}" name="quantity" min="1"
                                     style="width: 70px;" />
                                 <button type="submit" class="btn btn-sm">update</button>
                             </form>
                         </td>
-                        <td style="vertical-align: middle;">{{ number_format($item['price'], 0, '.', ',')}} VND</td>
+                        <td style="vertical-align: middle;">{{ number_format($item['price'], 0, '.', ',') }} VND</td>
                         <td style="vertical-align: middle;">
-                            <form action="#" method="post">
+                            <form action="{{route('cart.remove')}}" method="post">
+                                @csrf
+                                <input type="text" hidden name="product_id" value="{{$item['product_id']}}">
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -46,9 +51,21 @@
         </table>
         <a href="{{ route('products') }}">Back</a>
         <div class="row justify-content-end mt-3">
-            <div class="col-8 col-md-4">
-                <h4>Total: {{ number_format($cart->total, 0, '.', ',')}} VND</h4>
-                <a href="#" class="btn btn-dark btn-block mt-3">Payment</a>
+            <div class="card mb-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Subtotal: {{ number_format($cart->total, 0, '.', ',') }} VND</h5>
+                    <h5 class="card-title">Delivery/Shipping: 150,000 VND</h5>
+                    <div class="border border-gray-400"></div>
+                    <h1 class="mt-3 text-2xl text-red-500">Total: {{ number_format($cart->total + 150000, 0, '.', ',') }} VND</h1>
+                    <div class="mt-3">
+                        <input type="radio" name="payment_status">
+                        <label for="payment_status">Payment on delivery</label>
+                    </br>
+                        <input type="radio" name="payment_status">
+                        <label for="payment_status">Payment by card</label>
+                    </div>
+                    <a href="#" class="btn btn-outline-danger mt-3">Payment</a>
+                </div>
             </div>
         </div>
     </div>

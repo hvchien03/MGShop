@@ -32,42 +32,17 @@ class CartsController extends Controller
         $cart->addToCart($product);
         return redirect()->route('cart');
     }
-    // lõi chỗ này
-    // public function add(Request $request)
-    // {
-    //     $cart = Carts::where('user_id', auth()->id())->first();
-    //     if (!$cart) {
-    //         $cart = Carts::create([
-    //             'user_id' => auth()->id(),
-    //             'products' =>  new BSONArray([])
-    //         ]);
-    //     }
-    //     //dd($cart);
-    //     // Đảm bảo products là một mảng
-    //     // if (!is_array($cart->products)) {
-    //     //     $cart->products = [];
-    //     // }
-
-    //     // Tìm sản phẩm trong giỏ hàng
-    //     $productIndex = collect($cart->products)->search(function ($product) use ($request) {
-    //         return $product['product_id'] == $request->product_id;
-    //     });
-
-    //     if ($productIndex !== false) {
-    //         // Cập nhật số lượng
-    //         $cart->products[$productIndex]['quantity'] += $request->quantity;
-    //     } else {
-    //         // Thêm sản phẩm mới vào giỏ hàng
-    //         $cart->products[] = [
-    //             'product_id' => $request->product_id,
-    //             'quantity' => $request->quantity
-    //         ];
-    //     }
-    //     //dd($cart);
-
-    //     // Lưu lại thay đổi vào MongoDB
-    //     $cart->save();
-
-    //     return redirect()->route('cart');
-    // }
+    //kiểm tra funtion remove và removeFromCart trong model
+    public function remove(Request $request)
+    {
+        $cart = Carts::where('user_id', Auth::id())->first();
+        $cart->removeFromCart($request->product_id);
+        return redirect()->route('cart');
+    }
+    public function updateQuantity(Request $request)
+    {
+        $cart = Carts::where('user_id', Auth::id())->first();
+        $cart->updateQuantity($request->product_id, $request->quantity);
+        return redirect()->route('cart');
+    }
 }

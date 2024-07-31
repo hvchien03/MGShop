@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\BrandsController as AdminBrandsController;
 use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
 use App\Http\Controllers\Admin\ProductsController as AdminProductsController;
 use App\Http\Controllers\Admin\UsersController as AdminUsersController;
+use App\Http\Controllers\Client\OrdersController;
 use App\Http\Middleware\EnsureCartIsAccessedByAuthenticatedUser;
 
 Route::prefix('/')->group(function () {
@@ -27,12 +28,20 @@ Route::get('/logout', [UsersController::class, 'logout'])->name('logout');
 Route::middleware(EnsureCartIsAccessedByAuthenticatedUser::class)->group(function () {
     Route::get('/cart', [CartsController::class, 'index'])->name('cart');
     Route::post('/cart', [CartsController::class, 'add'])->name('cart.add');
+    Route::post('/cart/remove', [CartsController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/update-quantity', [CartsController::class, 'updateQuantity'])->name('cart.updateQuantity');
 });
+
+Route::prefix('/orders')->group(function () {
+    Route::get('', [OrdersController::class, 'index'])->name('orders');
+    Route::get('/{id}', [OrdersController::class, 'show']);
+});
+
 Route::prefix('/admin')->group(function () {
     Route::get('', [AdminHomeController::class, 'index'])->name('admin.home');
 
     //products
-    Route::get('/products', [AdminProductsController::class, 'index'])->name('admin.products.index'); //index
+    Route::get('/products', [AdminProductsController::class, 'index'])->name('admin.products.index');
     Route::match(['get', 'post'], '/products/create', [AdminProductsController::class, 'store'])->name('admin.products.store');
     Route::get('/products/{id}', [AdminProductsController::class, 'show'])->name('admin.products.show');
     Route::match(['get', 'post'], '/products/{id}/edit', [AdminProductsController::class, 'edit'])->name('admin.products.edit');

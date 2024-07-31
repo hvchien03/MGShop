@@ -56,15 +56,29 @@ class Carts extends Model
                 break;
             }
         }
-
-        // Re-index the array to ensure there are no gaps in the array keys
         $products = array_values($products);
-
         $this->products = $products;
         $this->total = array_reduce($products, function ($total, $item) {
             return $total + ($item['quantity'] * $item['price']);
         }, 0);
-
+        $this->save();
+        if (count($products) == 0) {
+            $this->delete();
+        }
+    }
+    public function updateQuantity($product_id, $quantity)
+    {
+        $products = $this->products ?: [];
+        foreach ($products as $key => $item) {
+            if ($item['product_id'] == $product_id) {
+                $products[$key]['quantity'] = $quantity;
+                break;
+            }
+        }
+        $this->products = $products;
+        $this->total = array_reduce($products, function ($total, $item) {
+            return $total + ($item['quantity'] * $item['price']);
+        }, 0);
         $this->save();
     }
 }
