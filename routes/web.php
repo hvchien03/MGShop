@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductsController as AdminProductsController;
 use App\Http\Controllers\Admin\UsersController as AdminUsersController;
 use App\Http\Controllers\Client\OrdersController;
 use App\Http\Middleware\EnsureCartIsAccessedByAuthenticatedUser;
+use App\Http\Controllers\Client\LocaleController;
 
 Route::prefix('/')->group(function () {
     Route::get('', [HomeController::class, 'index'])->name('home');
@@ -62,3 +63,6 @@ Route::prefix('/admin')->group(function () {
     //users
     Route::get('/users', [AdminUsersController::class, 'index'])->name('admin.users');
 });
+
+//multi language
+Route::get('/locale/{lang}', [LocaleController::class, 'setLocale']);

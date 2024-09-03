@@ -45,7 +45,7 @@
     <!-- @*-------------------------------------------------------*@ -->
     <div class="dropdown my-3" style="height:50px">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Sort
+            @lang('messages.Sort by')
         </button>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item"
@@ -75,7 +75,7 @@
                                     <input type="text" hidden name="product_id" value="{{ $product->_id }}">
                                     <input type="number" hidden name="quantity" value="1">
                                     <a href="/products/{{ $product->_id }}" class="btn btn-dark my-3"
-                                        style="border-radius: 3px;">More detail</a>
+                                        style="border-radius: 3px;">@lang('messages.More detail')</a>
                                     <button type="submit" class="btn btn-outline-danger" style="border-radius: 3px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-basket3" viewBox="0 0 16 16">

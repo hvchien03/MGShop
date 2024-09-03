@@ -52,12 +52,12 @@
                 </div>
                 <div class="col-md-5">
                     <div class="card-body p-3">
-                        <h5 class="card-title fs-2">New Arrival! M1W Fully Assembled</h5>
+                        <h5 class="card-title fs-2">@lang('messages.New Arrival')! M1W Fully Assembled</h5>
                         <p class="card-text">75% 82-Key Layout with Knob</p>
                         <p class="card-text">V3 Piano Pro Switches</p>
                         <p class="card-text">Side-printed Shine-through Gradient Keycaps</p>
                         <p class="card-text">Multi Modes & Gasket-mounted & South-facing PCB</p>
-                        <a class="btn bg-black text-white" href="#">Xem chi tiết</a>
+                        <a class="btn bg-black text-white" href="#">@lang('messages.More detail')</a>
                     </div>
                 </div>
             </div>
@@ -69,12 +69,12 @@
             <div class="row g-0">
                 <div class="col-md-5">
                     <div class="card-body p-3">
-                        <h5 class="card-title fs-2">New Arrival! M1W Fully Assembled</h5>
+                        <h5 class="card-title fs-2">@lang('messages.New Arrival')! M1W Fully Assembled</h5>
                         <p class="card-text">75% 82-Key Layout with Knob</p>
                         <p class="card-text">V3 Piano Pro Switches</p>
                         <p class="card-text">Side-printed Shine-through Gradient Keycaps</p>
                         <p class="card-text">Multi Modes & Gasket-mounted & South-facing PCB</p>
-                        <a class="btn bg-black text-white" href="#">Xem chi tiết</a>
+                        <a class="btn bg-black text-white" href="#">@lang('messages.More detail')</a>
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -95,12 +95,12 @@
                 </div>
                 <div class="col-md-5">
                     <div class="card-body p-3">
-                        <h5 class="card-title fs-2">New Arrival! M1W Fully Assembled</h5>
+                        <h5 class="card-title fs-2">@lang('messages.New Arrival')! M1W Fully Assembled</h5>
                         <p class="card-text">75% 82-Key Layout with Knob</p>
                         <p class="card-text">V3 Piano Pro Switches</p>
                         <p class="card-text">Side-printed Shine-through Gradient Keycaps</p>
                         <p class="card-text">Multi Modes & Gasket-mounted & South-facing PCB</p>
-                        <a class="btn bg-black text-white" href="#">Xem chi tiết</a>
+                        <a class="btn bg-black text-white" href="#">@lang('messages.More detail')</a>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                         <p class="card-text text-truncate">Một góc làm việc theo xu hướng “minimalist” cũng cần những chiếc
                             bàn phím gọn gàng và chỉn chu. Bài viết này Keychron VN sẽ giới thiệu với các bạn 5 chiếc bàn
                             phím cơ phù hợp cho góc setup tối giản nhưng không kém phần hiện đại.</p>
-                        <a href="#" class="btn btn-dark d-none d-lg-block">Xem chi tiết</a>
+                        <a href="#" class="btn btn-dark d-none d-lg-block">@lang('messages.More detail')</a>
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
                         <p class="card-text text-truncate">Một góc làm việc theo xu hướng “minimalist” cũng cần những chiếc
                             bàn phím gọn gàng và chỉn chu. Bài viết này Keychron VN sẽ giới thiệu với các bạn 5 chiếc bàn
                             phím cơ phù hợp cho góc setup tối giản nhưng không kém phần hiện đại.</p>
-                        <a href="#" class="btn btn-dark d-none d-lg-block">Xem chi tiết</a>
+                        <a href="#" class="btn btn-dark d-none d-lg-block">@lang('messages.More detail')</a>
                     </div>
                 </div>
             </div>
@@ -146,7 +146,7 @@
                         <p class="card-text text-truncate">Một góc làm việc theo xu hướng “minimalist” cũng cần những chiếc
                             bàn phím gọn gàng và chỉn chu. Bài viết này Keychron VN sẽ giới thiệu với các bạn 5 chiếc bàn
                             phím cơ phù hợp cho góc setup tối giản nhưng không kém phần hiện đại.</p>
-                        <a href="#" class="btn btn-dark d-none d-lg-block">Xem chi tiết</a>
+                        <a href="#" class="btn btn-dark d-none d-lg-block">@lang('messages.More detail')</a>
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                         <p class="card-text text-truncate">Một góc làm việc theo xu hướng “minimalist” cũng cần những chiếc
                             bàn phím gọn gàng và chỉn chu. Bài viết này Keychron VN sẽ giới thiệu với các bạn 5 chiếc bàn
                             phím cơ phù hợp cho góc setup tối giản nhưng không kém phần hiện đại.</p>
-                        <a href="#" class="btn btn-dark d-none d-lg-block">Xem chi tiết</a>
+                        <a href="#" class="btn btn-dark d-none d-lg-block">@lang('messages.More detail')</a>
                     </div>
                 </div>
             </div>

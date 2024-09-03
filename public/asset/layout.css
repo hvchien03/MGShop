@@ -1,0 +1,56 @@
+.wrapper {
+    width: 1280px;
+    height: 42px;
+    margin: auto;
+    display: flex;
+    padding: 0 12px;
+}
+.drop {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    line-height: 20px;
+}
+
+.drop:hover .drop-menu{
+    display: block;}
+.content-name{
+    padding: 12px;
+}
+.dropdown-content{
+    padding: 6px 12px;
+}
+.dropdown-content:first-child{
+    border-right: 1px solid #000;
+    
+}
+.drop-menu{
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    display: none;
+}
+
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    gap: 40px;
+}
+.cart {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 8px;
+}
+.item {
+    padding: 0 8px;
+}

@@ -31,8 +31,8 @@
                         @csrf
                         <input type="text" hidden name="product_id" value="{{$product->_id}}">
                         <input type="number" name="quantity" value="1" min="1" hidden />
-                        <button class="btn my-3 text-center" type="submit" style="border-radius: 3px; background-color:gray;   width: 200px; height: 40px; color: white;">Thêm vào giỏ hàng</button>
-                        <button class="btn my-3 text-center" type="submit" style="border-radius: 3px; background-color: gray; width: 200px; height: 40px; color: white;">Mua ngay</button>
+                        <button class="btn my-3 text-center" type="submit" style="border-radius: 3px; background-color:gray;   width: 200px; height: 40px; color: white;">@lang('messages.Add to cart')</button>
+                        <button class="btn my-3 text-center" type="submit" style="border-radius: 3px; background-color: gray; width: 200px; height: 40px; color: white;">@lang('messages.Buy now')</button>
                     </form>
 
                 </div>
@@ -72,7 +72,7 @@
                         <p class="card-text text-truncate">{{$item->description}}</p>
                         <div class="mx-auto justify-content-around d-lg-inline d-none">
                             <form action="#" method="post">
-                                <a href="/products/{{$item->_id}}" class="btn btn-dark my-3" style="border-radius: 3px;">Xem chi tiết</a>
+                                <a href="/products/{{$item->_id}}" class="btn btn-dark my-3" style="border-radius: 3px;">@lang('messages.More detail')</a>
                                 <button type="submit" class="btn btn-outline-danger" style="border-radius: 3px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket3" viewBox="0 0 16 16">
                                         <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6h-9.21z"></path>

@@ -18,11 +18,50 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('asset/layout.css') }}">
 </head>
 
 <body>
     <!-- @*--------------------------Navbar-----------------------------*@ -->
     <div class="header">
+        <div class="wrapper">
+            <div class="drop">
+                <p class="content-name">Language</p>
+                <div class="drop-menu">
+                    <span class="dropdown-content">
+                        <a href="locale/en">En - English</a>
+                    </span>
+                    <span class="dropdown-content">
+                        <a href="locale/vi">Vi - Vietnamese</a>
+                    </span>
+                </div>
+            </div>
+            <div class="actions">
+                <a href="{{ route('cart') }}" class="cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16.8" fill="currentColor"
+                        class="bi bi-cart3" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg>
+                    <span>@lang('messages.Cart')</span>
+                </a>
+                @if (!Auth::check())
+                    <a href="{{ route('login') }}" class="item">
+                        <span>@lang('messages.Login')</span>
+                    </a>
+                    <a href="{{ route('register') }}" class="item">
+                        <span>@lang('messages.Register')</span>
+                    </a>
+                @else
+                    <a href="#" class="item">
+                        <span>{{ Auth::User()->name }}</span>
+                    </a>
+                    <a href="{{ route('logout') }}" class="item text-red-500">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                @endif
+            </div>
+        </div>
         <header class="py-3 border-bottom" style="background-color: black">
             <div class="container text-center">
                 <a href="{{ route('home') }}" class="text-decoration-none">
@@ -33,68 +72,32 @@
         <nav class="py-2 bg-body-tertiary border-bottom">
             <div class="container d-flex flex-wrap">
                 <ul class="nav me-auto row">
-                    <li class="nav-item col-4 col-md-2 py-2"><a href="{{ route('products') }}"
-                            class="nav-link link-body-emphasis px-2">All</a></li>
-                    <li class="nav-item col-4 col-md-3 py-2"><a
+                    <li class="nav-item col-4 col-md-2 py-1"><a href="{{ route('products') }}"
+                            class="nav-link link-body-emphasis px-2">@lang('messages.All')</a></li>
+                    <li class="nav-item col-4 col-md-2 py-1"><a
                             href="{{ route('products', ['category' => '668f5a8fdf1c72e7a2622001']) }}"
-                            class="nav-link link-body-emphasis px-2">Keyboard</a></li>
-                    <li class="nav-item col-4 col-md-1 py-2 "><a
+                            class="nav-link link-body-emphasis px-2">@lang('messages.Keyboard')</a></li>
+                    <li class="nav-item col-4 col-md-2 py-1"><a
                             href="{{ route('products', ['category' => '66892c3c7e2f2c6beb0f2b84']) }}"
-                            class="nav-link link-body-emphasis px-2">Kit</a></li>
-                    <li class="nav-item col-4 col-md-2 py-2"><a
+                            class="nav-link link-body-emphasis px-2">@lang('messages.Kit')</a></li>
+                    <li class="nav-item col-4 col-md-2 py-1"><a
                             href="{{ route('products', ['category' => '66892c5e7e2f2c6beb0f2b86']) }}"
-                            class="nav-link link-body-emphasis px-2">Switch</a></li>
-                    <li class="nav-item col-4 col-md-2 py-2"><a
+                            class="nav-link link-body-emphasis px-2">@lang('messages.Switch')</a></li>
+                    <li class="nav-item col-4 col-md-2 py-1"><a
                             href="{{ route('products', ['category' => '66892c577e2f2c6beb0f2b85']) }}"
-                            class="nav-link link-body-emphasis px-2">Keycap</a></li>
-                    <li class="nav-item col-4 col-md-2 py-2"><a href="{{ route('contact') }}"
-                            class="nav-link link-body-emphasis px-2">Contact</a></li>
+                            class="nav-link link-body-emphasis px-2">@lang('messages.Keycap')</a></li>
+                    <li class="nav-item col-4 col-md-2 py-1"><a href="{{ route('contact') }}"
+                            class="nav-link link-body-emphasis px-2">@lang('messages.Contact')</a></li>
                 </ul>
                 <ul class="nav">
                     <li class="nav-item py-2">
                         <form action="{{ route('products') }}" method="get" class="d-flex" role="search">
                             <input class="form-control me-2 border-black" value="" name="search"
                                 style="width:330px; height: 40px; border-radius: 0" type="search"
-                                placeholder="Search..." aria-label="Search">
+                                placeholder="@lang('messages.Search')..." aria-label="Search">
                         </form>
 
                     </li>
-                    <li class="nav-item py-2 px-3">
-                        <a href="{{ route('cart') }}"
-                            class="nav-link link-body-emphasis px-2 d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                class="bi bi-cart3" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                            </svg>
-                            <p class="d-lg-none m-0 ms-2">Cart</p>
-                        </a>
-                    </li>
-
-
-                    @if (Auth::check())
-                        <li class="nav-item py-2 px-1">
-                            <a href="#" class="mx-3 mt-2 d-block">{{ Auth::User()->name }}</a>
-                        </li>
-                        <li class="nav-item py-2 px-1">
-
-                            <a href="{{ route('logout') }}" class="text-red-500 hover:underline mx-3 mt-2 d-block">
-                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            </a>
-                        </li>
-                    @else
-                        <li class="nav-item ms-2 py-2">
-                            <a href="{{ route('login') }}"
-                                class="nav-link link-body-emphasis px-2 btn btn-outline-danger d-flex align-items-center rounded-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                    fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                                </svg>
-                                <p class="d-lg-none m-0 ms-2">Đăng nhập</p>
-                            </a>
-                        </li>
-                    @endif
                 </ul>
             </div>
         </nav>
@@ -110,25 +113,22 @@
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Techkeys</h5>
                     <p style="text-align: justify">
-                        Chào mừng bạn đến với TechKeys - Thế giới của bàn phím cơ đỉnh cao.
-                        Chúng tôi tự hào cung cấp một bộ sưu tập đa dạng về bàn phím cơ chất lượng hàng đầu, với các
-                        tính năng và thiết kế độc đáo.
-                        Khám phá ngay và trải nghiệm sự khác biệt cùng TechKeys!
+                        @lang('messages.Welcome to TechKeys')
                     </p>
                 </div>
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3" style="text-align: justify">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Sản phẩm</h5>
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">@lang('messages.Products')</h5>
                     <p>
-                        <a href="#" class="text-white" style="text-decoration: none">Bàn phím</a>
+                        <a href="#" class="text-white" style="text-decoration: none">@lang('messages.Keyboard')</a>
                     </p>
                     <p>
-                        <a href="#" class="text-white" style="text-decoration: none">Kit</a>
+                        <a href="#" class="text-white" style="text-decoration: none">@lang('messages.Kit')</a>
                     </p>
                     <p>
-                        <a href="#" class="text-white" style="text-decoration: none">Switch</a>
+                        <a href="#" class="text-white" style="text-decoration: none">@lang('messages.Switch')</a>
                     </p>
                     <p>
-                        <a href="#" class="text-white" style="text-decoration: none">Keycap</a>
+                        <a href="#" class="text-white" style="text-decoration: none">@lang('messages.Keycap')</a>
                     </p>
                 </div>
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3" style="text-align: justify">
@@ -137,7 +137,8 @@
                         <a href="#" class="text-white" style="text-decoration: none">Your account</a>
                     </p>
                     <p>
-                        <a href="#" class="text-white" style="text-decoration: none">Become an Affiliates</a>
+                        <a href="#" class="text-white" style="text-decoration: none">Become an
+                            Affiliates</a>
                     </p>
                     <p>
                         <a href="#" class="text-white" style="text-decoration: none">Shipping Rates</a>
@@ -147,18 +148,18 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3" style="text-align: justify">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Liên hệ</h5>
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">@lang('messages.Contact')</h5>
                     <p>
-                        Địa chỉ: 140 Lê Trọng Tấn, Tây Thạnh, Tân Phú, Thành phố Hồ Chí Minh
+                        @lang('messages.Address'): 140 Lê Trọng Tấn, Tây Thạnh, Tân Phú, Thành phố Hồ Chí Minh
                     </p>
                     <p>
-                        Email: chienvan1203@gmail.com
+                        @lang('messages.Email'): chienvan1203@gmail.com
                     </p>
                     <p>
-                        Phone: +84263549824
+                        @lang('messages.Phone'): +84263549824
                     </p>
                     <p>
-                        Hotline: +84263549824
+                        @lang('messages.Hotline'): +84263549824
                     </p>
                 </div>
             </div>
@@ -168,7 +169,7 @@
             <div class="row text-center">
 
                 <div class="col-md-12 col-lg-6 col-xl-6 mx-auto mt-3">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Kết nối với chúng tôi</h5>
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">@lang('messages.Connect with Techkeys')</h5>
                     <div class="d-flex justify-content-center">
                         <p class="mx-3">
                             <a href="#" class="text-white" style="text-decoration: none">
@@ -209,20 +210,21 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-6 col-xl-6 mx-auto my-3">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Nhận mail từ TechKeys</h5>
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">@lang('messages.Receive emails from Techkeys')</h5>
                     <form class="row d-flex justify-content-center">
                         <div class="col-md-12 justify-content-center d-flex">
-                            <input type="text" class="form-control text-black-50" placeholder="Email Address"
+                            <input type="text" class="form-control text-black-50" placeholder="Email"
                                 style="width:250px; height:35px; border-radius: 0">
-                            <button type="submit" class="btn btn-danger" style="height:35px; border-radius: 0">Xác
-                                nhận</button>
+                            <button type="submit" class="btn btn-danger"
+                                style="height:35px; border-radius: 0">@lang('messages.Submit')</button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="text-center">
-                <p>Đăng ký nhận thông báo từ TechKeys để không bỏ lỡ các chương trình khuyến mãi.</p>
-                <p class="text-white-50 fw-lighter">Copyright 2023 © <span class="text-white fw-lighter">TechKeys Việt
+                <p>@lang('messages.Subscribe')</p>
+                <p class="text-white-50 fw-lighter">Copyright 2023 © <span class="text-white fw-lighter">TechKeys
+                        Việt
                         Nam</span></p>
             </div>
         </div>
