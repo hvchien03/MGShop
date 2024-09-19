@@ -33,3 +33,6 @@ Route::resource('products', ProductsController::class);
 
 use App\Http\Controllers\Api\BrandsController;
 Route::resource('brands', BrandsController::class);
+
+use App\Http\Controllers\Api\UsersController;
+Route::resource('users', UsersController::class);

@@ -15,7 +15,6 @@
             <tbody>
                 @foreach ($cart->products as $index => $item)
                     <tr>
-                        {{-- {{$product = $products->find($item['product_id'])}} --}}
                         <td style="vertical-align: middle;">{{ $index + 1 }}</td>
                         <td style="padding: 10px;"><img
                                 src ="{{ asset('images_upload/' . $products->find($item['product_id'])->image) }}"
@@ -49,23 +48,11 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="{{ route('products') }}">Back</a>
-        <div class="row justify-content-end mt-3">
-            <div class="card mb-3" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Subtotal: {{ number_format($cart->total, 0, '.', ',') }} VND</h5>
-                    <h5 class="card-title">Delivery/Shipping: 150,000 VND</h5>
-                    <div class="border border-gray-400"></div>
-                    <h1 class="mt-3 text-2xl text-red-500">Total: {{ number_format($cart->total + 150000, 0, '.', ',') }} VND</h1>
-                    <div class="mt-3">
-                        <input type="radio" name="payment_status">
-                        <label for="payment_status">Payment on delivery</label>
-                    </br>
-                        <input type="radio" name="payment_status">
-                        <label for="payment_status">Payment by card</label>
-                    </div>
-                    <a href="#" class="btn btn-outline-danger mt-3">Payment</a>
-                </div>
+        <div class=" container d-flex justify-content-between">
+            <a href="{{ route('products') }}">Back</a>
+            <div class="">
+                <h5 class="card-title">Total: {{ number_format($cart->total, 0, '.', ',') }} VND</h5>
+                <a href="{{route('checkout')}}" class="btn btn-outline-danger mt-3">Checkout</a>
             </div>
         </div>
     </div>

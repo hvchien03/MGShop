@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Orders extends Model
 {
@@ -12,12 +12,8 @@ class Orders extends Model
     protected $collection = 'orders';
     protected $fillable = [
         'user_id',
-        'products',
-        'address',
-        'date',
-        'total',
-        'payment_status',
-        'delivery_status'
+        'orders',
+        'total'
     ];
     public function user()
     {

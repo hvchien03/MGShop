@@ -7,6 +7,7 @@ use App\Models\Carts;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Orders;
 use MongoDB\Model\BSONArray;
 
 class CartsController extends Controller
@@ -14,7 +15,7 @@ class CartsController extends Controller
     public function index()
     {
         $products = Products::all();
-        $cart = Carts::where('user_id', auth()->id())->first();
+        $cart = Carts::where('user_id', Auth::id())->first();
         if (!$cart) {
             return view('client.carts.notAvailable');
         }

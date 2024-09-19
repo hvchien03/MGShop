@@ -15,9 +15,6 @@ class Carts extends Model
         'products',
         'total'
     ];
-    // protected $casts = [
-    //     'products' => 'array',
-    // ];
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', '_id');
